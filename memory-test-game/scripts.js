@@ -1,8 +1,16 @@
 const cards = document.querySelectorAll('.memory-card');
+const button = document.querySelector('.button');
 
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
+
+function changeView() {
+  let frontView = document.querySelector('.front-page-card');
+  frontView.style.display = 'none';
+  let memoryGame = document.querySelector('.memory-game');
+  memoryGame.style.display = 'flex'
+}
 
 function flipCard() {
   if (lockBoard) {
@@ -59,6 +67,15 @@ function unflipCards() {
 function resetBoard() {
   [hasFlippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
+  // let count = 0;
+  // cards.forEach(card => {
+  //   if(card.classList.contains("flip")) {
+  //     count = count + 1;
+  //   }
+  // })
+  // if(count.length === cards.length) {
+
+  // }
 }
 
 (function shuffle() {
@@ -69,3 +86,4 @@ function resetBoard() {
 })();
 
 cards.forEach(card => card.addEventListener('click', flipCard));
+button.addEventListener('click', changeView);
